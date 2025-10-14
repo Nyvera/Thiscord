@@ -86,7 +86,8 @@ messageForm.addEventListener("submit", async (e) => {
     uid: user.uid,
     email: user.email,
     channel: currentChannel,
-    timestamp: serverTimestamp()
+    timestamp: serverTimestamp(),  // Firestore timestamp
+    clientTime: new Date()          // JS fallback timestamp
   });
 
   messageInput.value = "";
@@ -98,7 +99,7 @@ function loadMessages() {
   const messagesQuery = query(
     collection(db, "messages"),
     where("channel", "==", currentChannel),
-    orderBy("timestamp")
+    orderBy("clientTime")  // use fallback timestamp for immediate display
   );
 
   onSnapshot(messagesQuery, (snapshot) => {
@@ -132,7 +133,7 @@ async function loadChannels() {
       li.addEventListener("click", () => {
         currentChannel = channelName;
         currentChannelSpan.textContent = `#${currentChannel}`;
-        loadMessages();
+        loadMessages(); // reload messages for selected channel
       });
 
       channelList.appendChild(li);
