@@ -3,22 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thisscord</title>
+  <title>Thiscord</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="login-container">
-    <h2>Mini Discord Login</h2>
-    <form id="login-form">
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login / Sign Up</button>
-    </form>
+<div id="login-container">
+  <h2>Mini Discord Login</h2>
+  <form id="login-form">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Login / Sign Up</button>
+  </form>
+</div>
+
+<div id="chat-container" style="display:none;">
+  <div id="sidebar">
+    <div id="channels">
+      <h3>Channels</h3>
+      <ul id="channel-list">
+        <!-- Channels will be populated here -->
+      </ul>
+      <input type="text" id="new-channel-input" placeholder="New channel">
+      <button id="add-channel-btn">Add</button>
+    </div>
   </div>
 
-  <div id="chat-container" style="display:none;">
+  <div id="chat-main">
     <div id="chat-header">
+      <span id="current-channel">#general</span>
       <span id="user-email"></span>
       <button id="logout-btn">Logout</button>
     </div>
@@ -28,12 +41,13 @@
       <button type="submit">Send</button>
     </form>
   </div>
+</div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="firebase-config.js"></script>
-  <script src="app.js"></script>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
